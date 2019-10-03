@@ -6,6 +6,9 @@ head
   script(type='text/javascript' src='https://code.jquery.com/jquery-1.12.4.js')
   script(type='text/javascript' src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
   script(type='text/javascript' src='https://canvasjs.com/assets/script/jquery-1.11.1.min.js')
+  script(type='text/javascript' src='https://canvasjs.com/assets/script/jquery.canvasjs.min.js')
+  script(src='https://code.jquery.com/jquery-1.12.4.js')
+  script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
   
   link(rel='stylesheet' href='../stylesheets/homepage.css')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
@@ -14,6 +17,7 @@ head
   link(rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css')
   link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
   link(rel='stylesheet' href='/resources/demos/style.css')
+
 
  
   
@@ -125,13 +129,70 @@ script.
     });
     }
     //filter as you drag and drop END
+
+    // tabs
+    $( function tabs() {
+    $( "#tabs" ).tabs();
+    } );
+
+    // graphs
+    $(function(){
+    $('#graphForm').submit(function(event) {
+    event.preventDefault();
+    var featureType = $("#feature").val();
+    jQuery.ajax({
+    url: '/graph?type='+featureType,
+    success: function(json) {
+    console.log(json);
+    $("#chartContainer").CanvasJSChart(json);
+    },
+    });
+    });
+    });
     
   
-    
-    
-h2 Learn About Climate Change
 
+#tabs
+  ul
+    li
+      a(href='#tabs-1') Tab 1
+    li
+      a(href='#tabs-2') Tab 2
 
+  #tabs-1
+    .tags.ui-widget-content
+      p Forest
+    .tags.ui-widget-content
+      p Global Warming
+    .tags.ui-widget-content
+     p Climate
+    .droppable.ui-widget-header
+      p Drop tag here
+
+    input#input(type='text' onkeyup='filterArticles()' placeholder='Search for articles..' title='Type a name')
+    button#search Search
+
+    h2 Learn About Climate Change
+
+    table#articleList
+      tr
+        th ARTICLES
+  #tabs-2
+    h2 Learn About Climate Change
+    br
+    p The Earth's climate has changed throughout history. Just in the last 650,000 years there have been seven cycles of glacial advance and retreat, with the abrupt end of the last ice age about 7,000 years ago marking the beginning of the modern climate era and of human civilization. Most of these climate changes are attributed to very small variations in Earth's orbit that change the amount of solar energy our planet receives.
+    p checkout the past years data in graphical representation. Sign in for more details and articles !
+
+    br
+    form#graphForm.form-inline(action='')
+      select.rounded.buttonOnHome#feature
+        option(value='temp') Avg Temparature
+        option(value='rain') Avg Rainfall
+      button.buttonOnHome.rounded(type='submit' style='') View Graph
+    br
+    br
+    #chartContainer(style='height: 300px; width: 90%;')
+   
 
 
 style.
@@ -164,29 +225,4 @@ script.
   }
   });
   });
-  
-.tags.ui-widget-content
-  p Forest
-.tags.ui-widget-content
-  p Global Warming
-.tags.ui-widget-content
-  p Climate
-.droppable.ui-widget-header
-  p Drop tag here
-
-
-
-
-
-input#input(type='text' onkeyup='filterArticles()' placeholder='Search for articles..' title='Type a name')
-button#search Search
-
-
-
-
-
-
-table#articleList
-  tr
-    th ARTICLES
   
