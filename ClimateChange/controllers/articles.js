@@ -192,6 +192,7 @@ const allArticles = [
 ]
 		
 	
+/*	
 module.exports.get_articles = function(req, res, next) {
 	var query = req.query.query;
 	if(!query){
@@ -201,6 +202,29 @@ module.exports.get_articles = function(req, res, next) {
 	else{
 		var matches = allArticles.filter(function(article){
 			return article.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
+		});
+		res.setHeader('Content-Type', 'application/json');
+		res.end(JSON.stringify({articles: matches}));
+	}	
+};*/
+
+
+module.exports.post_articles = function(req, res, next) {
+	var queries = req.body.queries;
+	console.log("Request: " +queries);
+	if(queries.length==0){
+		res.setHeader('Content-Type', 'application/json');
+		res.end(JSON.stringify({articles: allArticles}));
+	}
+	else{
+		var matches = allArticles.filter(function(article){
+			for (const query of queries) {
+				console.log("Checking query: " +query);
+				if(article.name.toLowerCase().indexOf(query.toLowerCase()) != -1){
+					return true;
+				}
+			}
+			return false;
 		});
 		res.setHeader('Content-Type', 'application/json');
 		res.end(JSON.stringify({articles: matches}));
