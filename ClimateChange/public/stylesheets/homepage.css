@@ -57,7 +57,17 @@ p {
   font-size: 20px;
 }
 
-
+.ui-widget-content {
+	border: 1px solid #dddddd;
+	background: #ffffff;
+	color: #333333;
+}
+.ui-widget-header {
+	border: 1px solid #dddddd;
+	background: #e9e9e9;
+	color: #333333;
+	font-weight: bold;
+}
 
 /* a:visited {
   color: rgb(26, 102, 42);

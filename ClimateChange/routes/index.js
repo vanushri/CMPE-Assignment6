@@ -9,6 +9,6 @@ router.get('/', ctrlIndex.get_index);
 
 router.get('/graph', ctrlGraph.get_graphs);
 
-router.get('/articles', ctrlArticles.get_articles);
+router.post('/articles', ctrlArticles.post_articles);
 
 module.exports = router;
