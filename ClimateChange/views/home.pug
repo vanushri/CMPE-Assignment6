@@ -21,17 +21,21 @@ head
 
 
 
- 
+// style for drag and drop START
+style.
+  .tags { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  .droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+  label {display: inline-block; width: 5em;} 
+// style for drag and drop END 
   
   
-  
-ul
-  li
-    a(href='/home') Articles 
-  li
-    a(href='/profile') Profile 
-  li 
-    if(userName)
+//ul
+//  li
+//    a(href='/home') Articles 
+//  li
+//    a(href='/profile') Profile 
+//  li 
+//    if(userName)
     a(href='/login/signout') Sign Out
     
     
@@ -86,26 +90,7 @@ script.
     
     
     
-    //filter as you type START
-    
-    function filterArticles() {
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/articles',
-    type:'POST',
-    data: JSON.stringify({queries: [$('#input').val()]}),
-    success: function(data) {
-    var resultRows= '';
-    $.each(data.articles, function (i, item) {
-    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
-    });
-    $('#articleList tr').remove();
-    $('#articleList').append(resultRows);
-    },
-    });
-    }
-    //filter as you type END
-    
+   
     
     
     
@@ -141,7 +126,7 @@ script.
     } );
 
 
-    // graphs
+    // graphs START
     $(function(){
     $('#graphForm').submit(function(event) {
     event.preventDefault();
@@ -155,7 +140,21 @@ script.
     });
     });
     });
-
+ // graphs END
+ 
+ 
+ 
+   //reset START
+    
+    function reset() {
+    $(".tags").animate({
+    top: "0px",
+    left: "0px"
+    });
+    dragDropArticles([]);
+    }
+    //reset END
+ 
 
 
 #tabs
@@ -178,7 +177,8 @@ script.
 
     input#input(type='text' onkeyup='filterArticles()' placeholder='Search for articles..' title='Type in a topic name for related articles')
     br
-    br
+    //button#reset Reset
+    button(type='button' onclick='reset()') Reset
     br
 
     h2 Learn About Climate Change
@@ -204,15 +204,12 @@ script.
     #chartContainer(style='height: 300px; width: 90%;')
 
 
-        
+      
   
    
 
 
-style.
-  .tags { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
-  .droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
-  label {display: inline-block; width: 5em;}
+
 
 
 
