@@ -24,7 +24,7 @@ head
 // style for drag and drop START
 style.
   .tags { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
-  .droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+  .droppable { width: 700px; height: 300px; padding: 0.5em; float: right; margin: 10px; }
   label {display: inline-block; width: 5em;} 
 // style for drag and drop END 
   
@@ -166,14 +166,33 @@ script.
 
   #tabs-1
 
-    .tags.ui-widget-content
-      p Forest
-    .tags.ui-widget-content
-      p Global Warming
-    .tags.ui-widget-content
-     p Climate
-    .droppable.ui-widget-header
-      p Drop tag here
+    table
+      tr
+        td 
+          .tags.ui-widget-content
+            p Forest
+        td
+          .tags.ui-widget-content
+            p Global Warming
+        td
+          .tags.ui-widget-content
+            p Climate
+        td
+          .tags.ui-widget-content
+            p Carbon Emission
+        td
+          .tags.ui-widget-content
+            p Footprint
+        td
+          .tags.ui-widget-content
+            p Fire
+        td
+          .droppable.ui-widget-header
+            p Drop tags here to search Articles
+      
+    
+    
+    
 
     input#input(type='text' onkeyup='filterArticles()' placeholder='Search for articles..' title='Type in a topic name for related articles')
     br
