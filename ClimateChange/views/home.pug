@@ -9,15 +9,19 @@ head
   script(type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js')
   script(type='text/javascript' src='https://code.jquery.com/jquery-1.12.4.js')
   script(type='text/javascript' src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+  script(src='https://code.jquery.com/jquery-1.12.4.js')
+  script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
 
-  
+
+
+  link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
   link(rel='stylesheet' href='../stylesheets/homepage.css')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' href='../stylesheets/navbar.css')
   link(rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css')
   link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
   link(href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/eggplant/jquery-ui.css' type='text/css' rel='stylesheet')
-  
+
 
   
 //ul
@@ -258,4 +262,26 @@ script.
   minHeight: 400
   });
   });
+  
+
+script.
+  $( function() {
+    var availableTags = [
+      "Deforestation",
+      "Climate",
+      "Trees",
+      "Fires",
+      "Carbon Footprint",
+      "Carbon Emission",
+      "Animals",
+      "Plants",
+      "Fossil Fuel",
+      "NASA",
+      "Forest",
+      "Wildfires",
+    ];
+    $( "#input" ).autocomplete({
+      source: availableTags
+    });
+  } );
   
