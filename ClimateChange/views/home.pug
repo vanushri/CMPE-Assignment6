@@ -9,6 +9,7 @@ head
   script(type='text/javascript' src='https://canvasjs.com/assets/script/jquery.canvasjs.min.js')
   script(src='https://code.jquery.com/jquery-1.12.4.js')
   script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+  script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js')
 
   
   link(rel='stylesheet' href='../stylesheets/homepage.css')
@@ -27,7 +28,15 @@ style.
   .droppable { width: 700px; height: 300px; padding: 0.5em; float: right; margin: 10px; }
   label {display: inline-block; width: 5em;} 
 // style for drag and drop END 
-  
+
+
+// style for resize START
+style.
+  .resizable { width: 400px; height: 400px; padding: 0.5em; }
+  .resizable h3 { text-align: center; margin: 0; }
+// style for resize END
+
+
   
 //ul
 //  li
@@ -189,9 +198,11 @@ script.
         td
           .droppable.ui-widget-header
             p Drop tags here to search Articles
+        
       
-    
-    
+  
+
+   
     
 
     //input#input(type='text' onkeyup='filterArticles()' placeholder='Search for articles..' title='Type in a topic name for related articles')
@@ -219,13 +230,10 @@ script.
         option(value='rain') Avg Rainfall
       button.buttonOnHome.rounded(type='submit' style='') View Graph
     br
+    .resizable.ui-widget-content
+      p resize
     br
     #chartContainer(style='height: 300px; width: 90%;')
-
-
-      
-  
-   
 
 
 
@@ -257,6 +265,16 @@ script.
   tagList.push($(ui.draggable).text());
   dragDropArticles(tagList);
   }
+  });
+  });
+  
+
+script.  
+  $( function() {
+  $( ".resizable" ).resizable(
+  {
+  minWidth: 400,
+  minHeight: 400
   });
   });
   
