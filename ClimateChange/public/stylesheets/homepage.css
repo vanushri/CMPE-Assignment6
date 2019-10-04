@@ -76,3 +76,25 @@ p {
 a:visited::after{
   content: "Viewed"
 } */
+
+
+
+
+
+
+// style for drag and drop START
+style.
+  .tags { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  .droppable { width: 700px; height: 300px; padding: 0.5em; float: right; margin: 10px; }
+  label {display: inline-block; width: 5em;} 
+// style for drag and drop END 
+
+
+// style for resize START
+style.
+  .resizable { width: 400px; height: 400px; padding: 0.5em; }
+  .resizable h3 { text-align: center; margin: 0; }
+// style for resize END
+
+
+
