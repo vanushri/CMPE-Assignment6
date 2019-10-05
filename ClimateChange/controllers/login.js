@@ -70,13 +70,20 @@ module.exports.logged_in = function(req, res, next)
 	}
 	else {
 		console.log("NOT LOGGED IN");
-		//req.session.registerMsg = 'Please log in !';
 		res.redirect('/login');
-		//res.render('login', {registerMsg : 'Please log in !'});
-	}
+	}	
+};
 
-	
-	
+module.exports.not_logged_in = function(req, res, next)
+{
+	if(!req.session.userName) {
+		console.log("Not logged in");
+		next();
+	}
+	else {
+		console.log("User Name in session: " + req.session.userName);
+		res.redirect('/home');
+	}	
 };
 
 module.exports.get_signout = function(req, res, next)
