@@ -174,8 +174,11 @@ script.
       a(href='#tabs-2') Graphs
     li 
       a(href='#tabs-3') Profile
+      li 
+      a(href='#tabs-4') Sign Out
       li
       h4 Welcome #{userName}
+
 
   #tabs-1
 
@@ -259,7 +262,9 @@ script.
       document.getElementById("breaks").innerHTML = text;
     
 
-
+#tabs-4
+    if(userName)
+    a(href='/login/signout') 
 
 
 style. 
