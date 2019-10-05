@@ -204,8 +204,9 @@ script.
   
    
     br
-    //button#reset Reset Tags
-    button(type='button' onclick='reset()') Reset
+    button(type='button' onclick='reset()' title='Reset all the tags') Reset
+    br
+    br
     br
     br
     input#input(type='text' onkeyup='filterArticles()' placeholder='Search...' title='Type in a topic name for related articles')
@@ -229,6 +230,8 @@ script.
       select.rounded.buttonOnHome#feature
         option(value='temp') Avg Temparature
         option(value='rain') Avg Rainfall
+        option(value='deforest') Deforestation
+        option(value='carbonEm') Carbon Emission
       button.buttonOnHome.rounded(type='submit' style='') View Graph
     br
     .resizable.ui-widget-content(style='height: 450px; width:450px')
