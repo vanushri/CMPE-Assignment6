@@ -231,10 +231,10 @@ script.
         option(value='rain') Avg Rainfall
       button.buttonOnHome.rounded(type='submit' style='') View Graph
     br
-    .resizable.ui-widget-content
-      p resize
+    .resizable.ui-widget-content(style='height: 450px; width:450px')
+      p resizable graphs
+      #chartContainer(style='height: 80%; width: 100%;')
     br
-    #chartContainer(style='height: 300px; width: 90%;')
 
 
   #tabs-3
@@ -298,8 +298,12 @@ script.
   $( function() {
   $( ".resizable" ).resizable(
   {
-  minWidth: 400,
-  minHeight: 400
+  //alsorResize:'#chartContainer',
+  minWidth: 200,
+  minHeight: 200,
+  resize: function(event, ui) {
+  $('#chartContainer').CanvasJSChart().render();
+  },
   });
   });
   
