@@ -169,9 +169,12 @@ script.
 #tabs
   ul
     li
-      a(href='#tabs-1') Tab 1
+      a(href='#tabs-1') Articles
     li
-      a(href='#tabs-2') Tab 2
+      a(href='#tabs-2') Graphs
+    li 
+      a(href='#tabs-3') Profile
+
 
   #tabs-1
 
@@ -234,6 +237,34 @@ script.
     #chartContainer(style='height: 300px; width: 90%;')
 
 
+  #tabs-3
+    br
+    p Username: #{userName}
+    img#profile-pic(alt='pic')
+    h2
+    |  Profile Picture
+    input#profile_pic(type='file')
+    p#breaks
+    
+    script.
+      var text = "";
+      var i;
+      for (i = 0; i < 20; i++) {
+      text += "<br>";
+      }
+      document.getElementById("breaks").innerHTML = text;
+    
+
+
+
+
+style. 
+    #profile-pic {
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        float: left; 
+    }
 
 
 script.
