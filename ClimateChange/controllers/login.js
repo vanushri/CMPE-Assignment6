@@ -70,7 +70,7 @@ module.exports.logged_in = function(req, res, next)
 	}
 	else {
 		console.log("NOT LOGGED IN");
-		req.session.registerMsg = 'Please log in !';
+		//req.session.registerMsg = 'Please log in !';
 		res.redirect('/login');
 		//res.render('login', {registerMsg : 'Please log in !'});
 	}
