@@ -219,7 +219,7 @@ module.exports.post_articles = function(req, res, next) {
 	else{
 		var matches = allArticles.filter(function(article){
 			for (const query of queries) {
-				console.log("Checking query: " +query);
+				//console.log("Checking query: " +query);
 				if(article.name.toLowerCase().indexOf(query.toLowerCase()) != -1){
 					return true;
 				}

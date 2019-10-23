@@ -12,7 +12,50 @@ var loginRouter = require('./routes/login');
 var homeRouter = require('./routes/home');
 var homeViewRouter = require('./routes/homeView');
 var profileRouter = require('./routes/profile');
+
+
+//assignment5 - start
+
+var modelRouter = require('./routes/model');
+//var mongo = require('mongodb');
+//var monk = require('monk');
+const url = 'localhost:27017/cmpe280';
+const db = require('monk')(url);
+const collection = db.get('All_articles')
+
+
+/*var modelRouter = require('./routes/model');
+
+var mongoose = require('mongoose');
+//Set up default mongoose connection
+var mongoDB = 'mongodb://localhost/cmpe280';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+//Define a schema
+var mySchema = mongoose.Schema({
+	Name: String,
+	Link: String,
+	AtrId: String
+});
+
+var ClimateModel = mongoose.model('All_Articles', mySchema);
+*/
+
+//assignment5 - end
+
+
 var app = express();
+//assignment5 - start
+app.use(function(req, res, next)
+        {
+            req.db = db;
+            next();
+        });
+//assignment5 - end
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +83,8 @@ app.use('/login', loginRouter);
 app.use('/home', homeRouter);
 app.use('/homeView', homeViewRouter);
 app.use('/profile', profileRouter); 
-
+//assignment5
+app.use('/mydata', modelRouter); 
 
 
 //messages
@@ -67,5 +111,9 @@ app.use(function(err, req, res, next) {
   //res.render('error');
   res.send(err);
 });
+
+
+
+
 
 module.exports = app;
