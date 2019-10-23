@@ -35,7 +35,7 @@ module.exports.post_signin = function(req, res, next)
 	}	
 	else if ((userName.localeCompare("admin")==0 && password.localeCompare("admin")==0)){
 		req.session.userName = "admin";
-		console.log("going to admin page");
+		console.log("going to admin page with ="+req.session.userName);
 		res.redirect('/manageArticles');
 	}
 	else {
@@ -69,12 +69,30 @@ module.exports.post_register = function(req, res, next)
 
 module.exports.logged_in = function(req, res, next)
 {
+	//console.log("User Name logged_in: " + req.session.userName);
+	//var flag = "admin".localeCompare(userName);
+	//console.log("is ADMIN ==="+flag);
 	if(req.session.userName) {
 		console.log("User Name in session: " + req.session.userName);
 		next();
 	}
 	else {
 		console.log("NOT LOGGED IN");
+		res.redirect('/login');
+	}	
+};
+
+module.exports.admin_logged_in = function(req, res, next)
+{
+	console.log("In admin_logged_in method");
+	var userName = req.session.userName;
+	console.log("Admin user = "+userName);
+	if("admin".localeCompare(userName)==0) {
+		console.log("User Name in session: " + req.session.userName);
+		next();
+	}
+	else {
+		console.log("ADMIN NOT LOGGED IN");
 		res.redirect('/login');
 	}	
 };
