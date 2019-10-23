@@ -36,6 +36,7 @@ module.exports.get_data = function(req, res)
     collection.find({}, {}, 
                     function(err, docs)
                     {
+    					console.log("docs =>"+docs);
                         res.render('mydata', { "ArticleList" : docs });
                     });
 };
