@@ -175,107 +175,32 @@ script.
       if(userName)
         a(href='/login/signout') Sign Out
       li
-      h4 Welcome Admin #{userName}
+      h4 Welcome #{userName}
 
 
   #tabs-1
 
-    
-  
     table
       tr
-        th Manage The Articles !
+        td 
+            p Manage the Articles !
       tr
         td 
-          p We can Add buttons here
-   
-    br
-    h1.
-        User List
-    ul
-        each article in ArticleList
-            li
-                a(href="mailto:#{list.email}")= user.username
-    
-    br
-    br
-
-    table#articleList
-      tr
-        th ARTICLES
+            p We can have buttons here (For Anjani, Archna & Divya)
   
-
-
+    each article in ArticleList
+      br
+      a(href=article.Link)= article.Name   
+      
+    
+    
+    
+    
  
 
-style. 
-    #profile-pic {
-        object-fit: cover;
-        width: 100px;
-        height: 100px;
-        float: left; 
-    }
 
-
-script.
-  $( function() {
-  var tagList=[];
-  
-  $( ".tags" ).draggable(
-  {
-  revert: false,
-  start: function(event, ui) {
-  var index = tagList.indexOf($(this).text());
-  if (index > -1) {
-  tagList.splice(index, 1);
-  }
-  },
-  stop: function(even, ui) {
-  dragDropArticles(tagList);
-  }
-  });
-  
-  $( ".droppable" ).droppable({
-  drop: function(event, ui){
-  tagList.push($(ui.draggable).text());
-  dragDropArticles(tagList);
-  }
-  });
-  });
   
 
-script.  
-  $( function() {
-  $( ".resizable" ).resizable(
-  {
-  //alsorResize:'#chartContainer',
-  minWidth: 200,
-  minHeight: 200,
-  resize: function(event, ui) {
-  $('#chartContainer').CanvasJSChart().render();
-  },
-  });
-  });
-  
 
-script.
-  $( function() {
-    var availableTags = [
-      "Deforestation",
-      "Climate",
-      "Trees",
-      "Fires",
-      "Carbon Footprint",
-      "Carbon Emission",
-      "Animals",
-      "Plants",
-      "Fossil Fuel",
-      "NASA",
-      "Forest",
-      "Wildfires",
-    ];
-    $( "#input" ).autocomplete({
-      source: availableTags
-    });
-  } );
+
   
