@@ -17,29 +17,14 @@ var profileRouter = require('./routes/profile');
 //assignment5 - start
 var modelRouter = require('./routes/model');
 
-
-
-/*const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://cmpe:cmpe@cluster0-ddt5m.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-const db = require('monk')(uri);
-client.connect(err => {
-  const collection = client.db("cmpe280").collection("All_Articles");
-  // perform actions on the collection object
-  //client.close();
-});
-*/
-
-
-
-
-
 //var mongo = require('mongodb');
 //var monk = require('monk');
+
+//Cloud Mongo DB - start
 const url = 'mongodb+srv://cmpe:cmpe@cluster0-ddt5m.mongodb.net/cmpe280?retryWrites=true&w=majority';
 const db = require('monk')(url);
 const collection = db.get('All_articles')
-
+//Cloud Mongo DB - end
 
 /*var modelRouter = require('./routes/model');
 
