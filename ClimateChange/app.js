@@ -10,7 +10,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var homeRouter = require('./routes/home');
-var homeViewRouter = require('./routes/homeView');
+//var homeViewRouter = require('./routes/homeView');
 var profileRouter = require('./routes/profile');
 
 
@@ -98,7 +98,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/home', homeRouter);
-app.use('/homeView', homeViewRouter);
+//app.use('/homeView', homeViewRouter);
 app.use('/profile', profileRouter); 
 //assignment5
 app.use('/manageArticles', modelRouter); 
