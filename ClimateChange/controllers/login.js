@@ -32,6 +32,11 @@ module.exports.post_signin = function(req, res, next)
 		console.log("going home");
 		res.redirect('/home');
 		//res.render('home', {userName : userName});
+	}	
+	else if ((userName.localeCompare("admin")==0 && password.localeCompare("admin")==0)){
+		req.session.userName = "admin";
+		console.log("going to admin page");
+		res.redirect('/manageArticles');
 	}
 	else {
 		console.log("going in else");
