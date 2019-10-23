@@ -101,7 +101,7 @@ app.use('/home', homeRouter);
 app.use('/homeView', homeViewRouter);
 app.use('/profile', profileRouter); 
 //assignment5
-app.use('/mydata', modelRouter); 
+app.use('/manageArticles', modelRouter); 
 
 
 //messages

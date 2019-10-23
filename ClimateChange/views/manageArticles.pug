@@ -26,7 +26,7 @@ head
 //    a(href='/profile') Profile 
 //  li 
 //    if(userName)
-    a(href='/login/signout') Sign Out
+//    a(href='/login/signout') Sign Out
     
     
     
@@ -130,55 +130,22 @@ script.
     });
     } );
 
-    //tooltip
-    $( function() {
-    $( document ).tooltip();
-    } );
-
-
-    // graphs START
-    $(function(){
-    $('#graphForm').submit(function(event) {
-    event.preventDefault();
-    var featureType = $("#feature").val();
-    jQuery.ajax({
-    url: '/graph?type='+featureType,
-    success: function(json) {
-    console.log(json);
-    $("#chartContainer").CanvasJSChart(json);
-    },
-    });
-    });
-    });
-    // graphs END
- 
- 
- 
-    //reset START
-    function reset() {
-    $(".tags").animate({
-    top: "0px",
-    left: "0px"
-    });
-    dragDropArticles([]);
-    }
-    //reset END
- 
 
 
 #tabs
   ul
     li
       a(href='#tabs-1') Articles
-   
-      li    
-      if(userName)
-        a(href='/login/signout') Sign Out
-      li
-      h4 Welcome #{userName}
-
+      
 
   #tabs-1
+  
+    table(style='width:100%')
+      tr
+        th(align='left') 
+          h4 Welcome Admin
+        th(align='right')
+          a(href='/login/signout') Sign Out
 
     table
       tr
