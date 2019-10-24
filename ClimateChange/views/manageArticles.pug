@@ -156,27 +156,42 @@ script.
 
     br
     br
-    button.deletebtn(type='button') Delete
-    button#updatebtn.updatebtn(type='button') Update
+    
 
-    br
-    form#formHidden(name="post_addarticle",method="post",action="/manageArticles/addArticle" style='display:none;')
-        input(type="text", placeholder="Change Article Name", name="name")
-        br
-        button(type='submit' value='Submit') Update Article
-
-
-    block content
-    h1= title
-    form#form(name="post_addarticle",method="post",action="/manageArticles/addArticle")
-        input(type="text", placeholder="Article Name", name="name")
-        br
-        input(type="text", placeholder="Article Link", name="link")
-        br
-        br
-        button(type='submit' value='Submit') Add Article
-
-
+    table(style='width:100%')
+      tr
+        td(style='width:33%')
+          form(method='post')
+            fieldset
+              legend Delete
+              p
+                button.deletebtn(type='button') Delete
+                //button#updatebtn.updatebtn(type='button') Update
+        td(style='width:33%')
+          form(action='/manageArticles/updateArticle' method='post')
+            fieldset
+              legend Update Articles
+              p
+                label Name:
+                input(name='name' type='text')
+              p
+                button(type='submit' value='Submit') Update
+        td(style='width:33%')
+          form(action='/manageArticles/addArticle' method='post')
+            fieldset
+              legend Add Articles
+              p
+                label Name:
+                input(name='name' type='text')
+              p
+                label Link:
+                input(name='link' type='text')
+              p
+                button(type='submit' value='Submit') Add
+        
+        
+         
+    
 
 style.
   button
