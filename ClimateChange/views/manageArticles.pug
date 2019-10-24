@@ -163,15 +163,7 @@ script.
     br
     br
     button.deletebtn(type='button') Delete
-    button#show.updatebtn(type='button') Update
-
-
-    .center.hideform
-      button#close(style='float: right;') X
-      form(action='/action_page.php')
-        input(type='text' name='articlename' placeholder='Update Article Name')
-        br
-        input(type='submit' value='Submit')
+    button.updatebtn(type='button') Update
 
 
 style.
@@ -179,26 +171,6 @@ style.
   {
   margin:5px;
   }
-  .center {
-  margin: auto;
-  width: 60%;
-  padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  .hideform {
-  display: none;
-  }
-
-script.
-  $('#show').on('click', function () {
-  $('.center').show();
-  $(this).hide();
-  })
-  $('#close').on('click', function () {
-  $('.center').hide();
-  $('#show').show();
-  })
-
 
 
 script.
@@ -208,24 +180,8 @@ script.
     });
     });
 
+
 //delete article
-script.
-    $(document).ready(function(){
-    $(".deletebtn").click(function(){
-    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/delete',
-    type:'POST',
-    data: JSON.stringify({queries: [$(":checkbox:checked").map(function() { return $(this).val(); }).get()]}),
-    });
-    alert("Article Successfully Deleted!");
-    location.reload(true);
-    });
-    });
-
-
-//update article
 script.
     $(document).ready(function(){
     $(".deletebtn").click(function(){
