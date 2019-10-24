@@ -160,25 +160,21 @@ script.
     button#updatebtn.updatebtn(type='button') Update
 
     br
-    input#updateform.form-control(type='text' placeholder='Change Article Name' style='display:none;')
-    form#form(name="post_addarticle",method="post",action="/manageArticles/addArticle")
-        input(type="text", placeholder="name", name="name")
+    form#formHidden(name="post_addarticle",method="post",action="/manageArticles/addArticle" style='display:none;')
+        input(type="text", placeholder="Change Article Name", name="name")
         br
-        input(type="text", placeholder="link", name="link")
-        br
-        br
-        button(type='submit' value='Submit') AddArticle
+        button(type='submit' value='Submit') Update Article
 
 
     block content
     h1= title
     form#form(name="post_addarticle",method="post",action="/manageArticles/addArticle")
-        input(type="text", placeholder="name", name="name")
+        input(type="text", placeholder="Article Name", name="name")
         br
-        input(type="text", placeholder="link", name="link")
+        input(type="text", placeholder="Article Link", name="link")
         br
         br
-        button(type='submit' value='Submit') AddArticle
+        button(type='submit' value='Submit') Add Article
 
 
 
@@ -218,7 +214,7 @@ script.
 script.
   $(document).ready(function(){
   $('#updatebtn').click(function(){
-  $('#updateform').toggle();
+  $('#formHidden').toggle();
   });
   });
 
