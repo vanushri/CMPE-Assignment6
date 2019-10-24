@@ -148,9 +148,6 @@ script.
       tr
         td 
             p Manage the Articles !
-      tr
-        td 
-            p We can have buttons here (For Anjani, Archna & Divya)
   
     each article in ArticleList
       br
@@ -161,6 +158,17 @@ script.
     br
     button.deletebtn(type='button') Delete
     button.updatebtn(type='button') Update
+
+
+    block content
+    h1= title
+    form#form(name="post_addarticle",method="post",action="/manageArticles/addArticle")
+        input(type="text", placeholder="name", name="name")
+        br
+        input(type="text", placeholder="link", name="link")
+        br
+        br
+        button(type='submit' value='Submit') AddArticle
 
 
 style.
@@ -195,21 +203,6 @@ script.
     });
 
 
-
-
-
-
-      a(href=article.Link)= article.Name
-    
-    block content
-    h1= title
-    form#form(name="post_addarticle",method="post",action="/manageArticles/addArticle")
-        input(type="text", placeholder="name", name="name")
-        br
-        input(type="text", placeholder="link", name="link")
-        br
-        br
-        button(type='submit' value='Submit') AddArticle
      
 
   
