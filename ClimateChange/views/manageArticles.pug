@@ -157,7 +157,17 @@ script.
     br
     br
     button.deletebtn(type='button') Delete
-    button.updatebtn(type='button') Update
+    button#updatebtn.updatebtn(type='button') Update
+
+    br
+    input#updateform.form-control(type='text' placeholder='Change Article Name' style='display:none;')
+    form#form(name="post_addarticle",method="post",action="/manageArticles/addArticle")
+        input(type="text", placeholder="name", name="name")
+        br
+        input(type="text", placeholder="link", name="link")
+        br
+        br
+        button(type='submit' value='Submit') AddArticle
 
 
     block content
@@ -169,6 +179,7 @@ script.
         br
         br
         button(type='submit' value='Submit') AddArticle
+
 
 
 style.
@@ -202,6 +213,14 @@ script.
     });
     });
 
+
+//update article
+script.
+  $(document).ready(function(){
+  $('#updatebtn').click(function(){
+  $('#updateform').toggle();
+  });
+  });
 
      
 
