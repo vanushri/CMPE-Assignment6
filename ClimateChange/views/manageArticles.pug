@@ -140,7 +140,7 @@ script.
 
   #tabs-1
   
-    table(style='width:100%')
+    table#abc(style='width:100%')
       tr
         th(align='left') 
           h4 Welcome Admin
@@ -157,23 +157,49 @@ script.
   
     each article in ArticleList
       br
-      input(type='checkbox' name='articles' value=article._id)
+      input(type='checkbox' name='articles' value=article._id )
       a(href=article.Link)= article.Name
 
     br
-    input#myVal(type='text' value='')
     br
     button.deletebtn(type='button') Delete
+    button#show.updatebtn(type='button') Update
 
+
+    .center.hideform
+      button#close(style='float: right;') X
+      form(action='/action_page.php')
+        input(type='text' name='articlename' placeholder='Update Article Name')
+        br
+        input(type='submit' value='Submit')
+
+
+style.
+  button
+  {
+  margin:5px;
+  }
+  .center {
+  margin: auto;
+  width: 60%;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .hideform {
+  display: none;
+  }
 
 script.
-    $(function() {
-    $(":checkbox").change(function() {
-    var arr = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
-    $("#myVal").val(arr.join('/'));
-    });
-    });
-      
+  $('#show').on('click', function () {
+  $('.center').show();
+  $(this).hide();
+  })
+  $('#close').on('click', function () {
+  $('.center').hide();
+  $('#show').show();
+  })
+
+
 
 script.
     $(document).ready(function(){
@@ -182,22 +208,42 @@ script.
     });
     });
 
-
-
+//delete article
 script.
     $(document).ready(function(){
     $(".deletebtn").click(function(){
+    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
     jQuery.ajax({
     contentType: 'application/json',
     url: '/delete',
     type:'POST',
     data: JSON.stringify({queries: [$(":checkbox:checked").map(function() { return $(this).val(); }).get()]}),
     });
+    alert("Article Successfully Deleted!");
+    location.reload(true);
+    });
+    });
+
+
+//update article
+script.
+    $(document).ready(function(){
+    $(".deletebtn").click(function(){
+    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/delete',
+    type:'POST',
+    data: JSON.stringify({queries: [$(":checkbox:checked").map(function() { return $(this).val(); }).get()]}),
+    });
+    alert("Article Successfully Deleted!");
+    location.reload(true);
     });
     });
 
 
 
-//alert("Deleted Article " + id);
+
+
 
 

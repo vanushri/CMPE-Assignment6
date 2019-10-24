@@ -17,4 +17,6 @@ router.post('/articles', ctrlArticles.post_articles);
 
 router.post('/delete', ctrlModel.post_deletearticle)
 
+router.post('/update', ctrlModel.post_updatearticle)
+
 module.exports = router;
