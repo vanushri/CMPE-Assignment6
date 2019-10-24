@@ -8,7 +8,7 @@ module.exports.get_data = function(req, res)
     collection.find({}, {}, 
                     function(err, docs)
                     {
-    					console.log("docs =>"+docs);
+    					          console.log("docs =>"+docs);
                         res.render('manageArticles', { "ArticleList" : docs });
                     });
 };
@@ -61,7 +61,6 @@ module.exports.post_addarticle = function(req, res) {
 
 
 
-
 module.exports.post_updatearticle = function(req, res) 
 {
     var info = String(req.body.queries);
@@ -91,19 +90,22 @@ module.exports.post_updatearticle = function(req, res)
                        });
 };
 
+
 module.exports.post_searcharticles = function(req, res) 
 {
+    var searchinput = req.body.queries;
+    console.log("YOOOOOOOOO" + searchinput)
     var db = req.db;
-    var name = req.body.name;
     var collection = db.get('All_Articles');
-    collection.find( { Name : name }, 
+    collection.find( { "Name" : searchinput }, 
                      function(err, doc) 
                      {
                          if (err) {
-                             res.send("Find search.");
+                             console.log('Error in Search.')
                          }
                          else {
-                             
+                             console.log('Successful Search.')
                          }
                      });
 };
+

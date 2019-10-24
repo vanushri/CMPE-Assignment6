@@ -145,7 +145,7 @@ script.
         th(align='right')
           a(href='/login/signout') Sign Out
     .search
-      input.searchTerm(type='text', name='searchArt', placeholder='Search Article?')
+      input.searchTerm(type='text', name='searchInput', placeholder='Search Article?')
       button.searchButton(type='submit')
         i.fa.fa-search
         
@@ -194,7 +194,6 @@ script.
                 button(type='submit' value='Submit') Add
         
            
-
 style.
   button
   {
@@ -257,7 +256,20 @@ script.
     });
 
      
-
+//search article
+script.
+    $(document).ready(function(){
+    $(".searchButton").click(function(){
+    var searchinput = $('[name="searchInput"]').val();
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/search',
+    type:'POST',
+    data: JSON.stringify({queries: [searchinput]}),
+    });
+    //alert("Article Successfully Deleted!");
+    });
+    });
   
     
     

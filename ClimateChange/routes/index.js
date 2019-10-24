@@ -19,4 +19,6 @@ router.post('/delete', ctrlModel.post_deletearticle)
 
 router.post('/update', ctrlModel.post_updatearticle)
 
+router.post('/search', ctrlModel.post_searcharticles)
+
 module.exports = router;
