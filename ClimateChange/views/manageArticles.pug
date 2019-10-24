@@ -168,14 +168,15 @@ script.
                 button.deletebtn(type='button') Delete
                 //button#updatebtn.updatebtn(type='button') Update
         td(style='width:33%')
-          form(action='/manageArticles/updateArticle' method='post')
+          form(method='post')
             fieldset
-              legend Update Articles
+              legend Update
               p
                 label Name:
                 input(name='name' type='text')
               p
-                button(type='submit' value='Submit') Update
+                button.deletebtn(type='button') Update
+                //button#updatebtn.updatebtn(type='button') Update
         td(style='width:33%')
           form(action='/manageArticles/addArticle' method='post')
             fieldset
@@ -191,7 +192,10 @@ script.
         
         
          
-    
+script.
+  function myFunction() {
+  var x = document.getElementById("articles").value;
+  document.getElementById("nameUp").value = x;    
 
 style.
   button
