@@ -16,9 +16,6 @@ head
   link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
   link(href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/eggplant/jquery-ui.css' type='text/css' rel='stylesheet')
 
-
-
-  
 //ul
 //  li
 //    a(href='/home') Articles 
@@ -30,7 +27,7 @@ head
     
     
     
-    // function that fetches the articles on page load START
+//- function that fetches the articles on page load START
     
 script.
     $(document).ready(function(){
@@ -202,4 +199,20 @@ script.
 
 
 
+      a(href=article.Link)= article.Name
+    
+    block content
+    h1= title
+    form#form(name="post_addarticle",method="post",action="/manageArticles/addArticle")
+        input(type="text", placeholder="name", name="name")
+        br
+        input(type="text", placeholder="link", name="link")
+        br
+        br
+        button(type='submit' value='Submit') AddArticle
+     
+
+  
+    
+    
 

@@ -193,7 +193,9 @@ const allArticles = [
 		
 	
 /*	
-module.exports.get_articles = function(req, res, next) {
+module.exports.get_articles = function(req, res, 
+	
+	) {
 	var query = req.query.query;
 	if(!query){
 		res.setHeader('Content-Type', 'application/json');
