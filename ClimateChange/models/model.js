@@ -24,10 +24,10 @@ module.exports.post_deletearticle = function(req, res)
                        function (err, doc)
                        {
                            if (err) {
-                               console.log("Delete failed.");
+                               console.log("Delete Failed.");
                            }
                            else {
-                               console.log("Successfully deleted " + articleid);
+                               console.log("Successfully Deleted " + articleid);
                                collection.find({}, {}, 
                                     function(err, docs)
                                     {
@@ -40,7 +40,6 @@ module.exports.post_deletearticle = function(req, res)
 
 
 module.exports.post_addarticle = function(req, res) {
-console.log("jodajgodsjogjdsojgodsajogjoidjsgojdsgjodsjgaojdogj")
   var db = req.db;
 
   var name = req.body.name;
@@ -58,4 +57,36 @@ console.log("jodajgodsjogjdsojgodsajogjoidjsgojdsgjodsjgaojdogj")
       res.redirect('/manageArticles');
     }
   });
+};
+
+
+
+
+module.exports.post_updatearticle = function(req, res) 
+{
+    var info = String(req.body.queries);
+    console.log("INFO: " + info);
+    infoArr = info.split(',');
+    var articleid = infoArr[0];
+    var newname = infoArr[1];
+    console.log("Article ID to Update: " + articleid);
+    console.log("New Article Name: " + newname);
+    var db = req.db;
+    var collection = db.get('All_Articles');
+    collection.update({"_id" : String(articleid)}, {$set: {Name : String(newname)}},
+                      function (err, doc)
+                      {
+                          if (err) {
+                              console.log("Update Failed.");
+                          }
+                          else {
+                              console.log("Successfully Updated " + articleid);
+                              collection.find({}, {}, 
+                                  function(err, docs)
+                                  {
+                                      console.log("docs =>"+docs);
+                                      res.render('manageArticles', { "ArticleList" : doc });
+                                  });
+                          }
+                       });
 };

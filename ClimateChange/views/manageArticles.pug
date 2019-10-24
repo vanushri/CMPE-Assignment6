@@ -166,17 +166,15 @@ script.
               legend Delete
               p
                 button.deletebtn(type='button') Delete
-                //button#updatebtn.updatebtn(type='button') Update
         td(style='width:33%')
           form(method='post')
             fieldset
               legend Update
               p
                 label Name:
-                input(name='name' type='text')
+                input(name='newname' type='text')
               p
-                button.deletebtn(type='button') Update
-                //button#updatebtn.updatebtn(type='button') Update
+                button.updatebtn(type='button') Update
         td(style='width:33%')
           form(action='/manageArticles/addArticle' method='post')
             fieldset
@@ -190,12 +188,7 @@ script.
               p
                 button(type='submit' value='Submit') Add
         
-        
-         
-script.
-  function myFunction() {
-  var x = document.getElementById("articles").value;
-  document.getElementById("nameUp").value = x;    
+           
 
 style.
   button
@@ -221,7 +214,7 @@ script.
     contentType: 'application/json',
     url: '/delete',
     type:'POST',
-    data: JSON.stringify({queries: [$(":checkbox:checked").map(function() { return $(this).val(); }).get()]}),
+    data: JSON.stringify({queries: [id]}),
     });
     alert("Article Successfully Deleted!");
     location.reload(true);
@@ -236,6 +229,27 @@ script.
   $('#formHidden').toggle();
   });
   });
+
+
+script.
+    $(document).ready(function(){
+    $(".updatebtn").click(function(){
+    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
+    var newname = $('[name="newname"]').val();
+    info = [];
+    info[0] = id;
+    info[1] = newname;
+    console.log("NEW NAME: " + newname)
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/update',
+    type:'POST',
+    data: JSON.stringify({queries: [info]}),
+    });
+    alert("Article Successfully Updated!");
+    location.reload(true);
+    });
+    });
 
      
 
