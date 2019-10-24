@@ -90,7 +90,6 @@ module.exports.post_updatearticle = function(req, res)
                        });
 };
 
-
 module.exports.post_searcharticles = function(req, res) 
 {
     var searchinput = req.body.queries;
@@ -99,6 +98,7 @@ module.exports.post_searcharticles = function(req, res)
     var collection = db.get('All_Articles');
     collection.find( { "Name" : searchinput }, 
                      function(err, doc) 
+                
                      {
                          if (err) {
                              console.log('Error in Search.')
@@ -106,6 +106,8 @@ module.exports.post_searcharticles = function(req, res)
                          else {
                              console.log('Successful Search.')
                          }
+                         console.log('HEREEEEEEEEEEEEE');
                      });
 };
+
 

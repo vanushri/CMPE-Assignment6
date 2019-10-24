@@ -144,6 +144,7 @@ script.
           h4 Welcome Admin
         th(align='right')
           a(href='/login/signout') Sign Out
+   
     .search
       input.searchTerm(type='text', name='searchInput', placeholder='Search Article?')
       button.searchButton(type='submit')
@@ -192,8 +193,6 @@ script.
                 input(name='link' type='text')
               p
                 button(type='submit' value='Submit') Add
-        
-           
 style.
   button
   {
@@ -225,7 +224,6 @@ script.
     });
     });
 
-
 //update article
 script.
   $(document).ready(function(){
@@ -233,7 +231,6 @@ script.
   $('#formHidden').toggle();
   });
   });
-
 
 script.
     $(document).ready(function(){
@@ -255,8 +252,7 @@ script.
     });
     });
 
-     
-//search article
+//search article 
 script.
     $(document).ready(function(){
     $(".searchButton").click(function(){
@@ -270,7 +266,3 @@ script.
     //alert("Article Successfully Deleted!");
     });
     });
-  
-    
-    
-
