@@ -18,16 +18,18 @@ module.exports.get_data = function(req, res)
 module.exports.post_deletearticle = function(req, res) 
 {
     var articleid = req.body.queries;
+    console.log("WOOHOOOOO" + articleid);
     var db = req.db;
     var collection = db.get('All_Articles');
-    collection.remove( { "ArtId" : articleid },
+    collection.remove( { "_id" : ObjectId("5daffc6a1c9d440000544fda") },
                        function (err, doc) 
                        {
                            if (err) {
-                               res.send("Delete failed.");
+                               console.log("Delete failed.")
+
                            }
                            else {
-                               res.send("Successfully deleted " + articleid);
+                               console.log("Successfully deleted " + articleid)
                            }
                        });
 };

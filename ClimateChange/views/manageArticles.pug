@@ -157,7 +157,7 @@ script.
   
     each article in ArticleList
       br
-      input(type='checkbox' name='articles' value=article.ArtId)
+      input(type='checkbox' name='articles' value=article._id)
       a(href=article.Link)= article.Name
 
     br
