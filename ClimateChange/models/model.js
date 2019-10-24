@@ -90,3 +90,20 @@ module.exports.post_updatearticle = function(req, res)
                           }
                        });
 };
+
+module.exports.post_searcharticles = function(req, res) 
+{
+    var db = req.db;
+    var name = req.body.name;
+    var collection = db.get('All_Articles');
+    collection.find( { Name : name }, 
+                     function(err, doc) 
+                     {
+                         if (err) {
+                             res.send("Find search.");
+                         }
+                         else {
+                             
+                         }
+                     });
+};

@@ -15,6 +15,7 @@ head
   link(rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css')
   link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
   link(href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/eggplant/jquery-ui.css' type='text/css' rel='stylesheet')
+  link(rel ='stylesheet' href='../stylesheets/searchbar.css')
 
 //ul
 //  li
@@ -143,7 +144,11 @@ script.
           h4 Welcome Admin
         th(align='right')
           a(href='/login/signout') Sign Out
-
+    .search
+      input.searchTerm(type='text', name='searchArt', placeholder='Search Article?')
+      button.searchButton(type='submit')
+        i.fa.fa-search
+        
     table
       tr
         td 
