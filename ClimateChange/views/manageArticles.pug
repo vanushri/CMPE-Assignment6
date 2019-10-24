@@ -157,17 +157,47 @@ script.
   
     each article in ArticleList
       br
-      a(href=article.Link)= article.Name   
+      input(type='checkbox' name='articles' value=article.ArtId)
+      a(href=article.Link)= article.Name
+
+    br
+    input#myVal(type='text' value='')
+    br
+    button.deletebtn(type='button') Delete
+
+
+script.
+    $(function() {
+    $(":checkbox").change(function() {
+    var arr = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
+    $("#myVal").val(arr.join('/'));
+    });
+    });
       
-    
-    
-    
-    
- 
+
+script.
+    $(document).ready(function(){
+    $('input:checkbox').click(function() {
+    $('input:checkbox').not(this).prop('checked', false);
+    });
+    });
 
 
-  
+
+script.
+    $(document).ready(function(){
+    $(".deletebtn").click(function(){
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/delete',
+    type:'POST',
+    data: JSON.stringify({queries: [$(":checkbox:checked").map(function() { return $(this).val(); }).get()]}),
+    });
+    });
+    });
 
 
 
-  
+//alert("Deleted Article " + id);
+
+
