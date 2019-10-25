@@ -19,9 +19,9 @@ router.post('/delete', ctrlModel.post_deletearticle)
 
 router.post('/update', ctrlModel.post_updatearticle)
 
-router.post('/search', ctrlModel.post_searcharticles)
+// router.post('/search', ctrlModel.post_searcharticles)
 
-router.post('/search3', ctrlModel.search3)
+router.post('/search', ctrlModel.article_search)
 
 //router.get('/search2', ctrlModel.search2)
 

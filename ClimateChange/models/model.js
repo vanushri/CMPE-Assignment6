@@ -156,31 +156,26 @@ module.exports.search2 = function(req, res)
 //     collection.find({"Name": /.nasa./}, ); 
 // };
 
-module.exports.search3 = function(req, res) 
+module.exports.article_search = function(req, res) 
 {
-    var searchinput = req.body.queries;
-    console.log("YOOOOOOOOO" + searchinput)
+    var searchinput = String(req.body.queries);
+    console.log("User Input: " + searchinput)
     var db = req.db;
     var collection = db.get('All_Articles');
-    collection.find({}, 
+    var pattern = new RegExp(searchinput);
+     
+    console.log(pattern); 
+    collection.find({"Name" : {$regex: pattern, $options: 'i'}},{}, 
     function(err, docs){
             if(err){
                 throw err; 
             } else{
-                console.log(docs);
+                console.log("Found Entry")
                 var articleNames = docs.map(function(name){
-                    return name.Name; 
+                     return name.Name; 
                 });
                 console.log(articleNames);//prints array with only artcile names
-                var str = "Nasa"
-                function searchStringInArray(str, articleNames){
-                    for(var j=0; j<articleNames.length; j++)
-                    {
-                        if(articleNames[j].match(str)) return j;
-                    }
-                    return -1
-                }
-                console.log(searchStringInArray); 
+                //res.render('manageArticles', { "ArticleName" : articleNames }); 
             }
         }
     );
