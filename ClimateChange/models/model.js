@@ -8,12 +8,10 @@ module.exports.get_data = function(req, res)
     collection.find({}, {}, 
                     function(err, docs)
                     {
-    					          console.log("docs =>"+docs);
+    					console.log("docs =>"+docs);
                         res.render('manageArticles', { "ArticleList" : docs });
                     });
 };
-
-
 module.exports.post_deletearticle = function(req, res) 
 {
     var articleid = req.body.queries;
@@ -126,36 +124,6 @@ module.exports.search2 = function(req, res)
                     });
 };
 
-// module.exports.search3 = function(req, res) 
-// {
-
-//     var db = req.db;
-//     var collection = db.get('All_Articles');
-//     collection.findOne(
-//         {
-//          name: searchinput
-//         }, 
-//         function(err, docs){
-//             if(err){
-//                 throw err; 
-//             } else{
-//                 console.log("Hellloooo", docs);
-
-//             }
-//             res.render("manageArticles", {"ArticleList":docs}); 
-//         }
-//     );
-// };
-
-// module.exports.search3 = function(req, res) 
-// {
-//     var searchinput = req.body.name;
-//     console.log("YOOOOOOOOO" + searchinput)
-//     var db = req.db;
-//     var collection = db.get('All_Articles');
-//     collection.find({"Name": /.nasa./}, ); 
-// };
-
 module.exports.article_search = function(req, res) 
 {
     var searchinput = String(req.body.queries);
@@ -163,7 +131,6 @@ module.exports.article_search = function(req, res)
     var db = req.db;
     var collection = db.get('All_Articles');
     var pattern = new RegExp(searchinput);
-     
     console.log(pattern); 
     collection.find({"Name" : {$regex: pattern, $options: 'i'}},{}, 
     function(err, docs){
@@ -171,11 +138,13 @@ module.exports.article_search = function(req, res)
                 throw err; 
             } else{
                 console.log("Found Entry")
-                var articleNames = docs.map(function(name){
-                     return name.Name; 
+                console.log(docs)
+                res.render('manageArticles', { "ArticleList" : docs });
+                docs.map(function(name){
+                    return name.Name; 
                 });
-                console.log(articleNames);//prints array with only artcile names
-                //res.render('manageArticles', { "ArticleName" : articleNames }); 
+                console.log(docs);//prints array with only artcile names
+                //res.render('manageArticles', { "ArticleList" : docs });
             }
         }
     );

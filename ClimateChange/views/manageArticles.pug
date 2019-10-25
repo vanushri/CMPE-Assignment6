@@ -264,7 +264,15 @@ script.
     url: '/search',
     type:'POST',
     data: JSON.stringify({queries: [searchinput]}),
-   
+     success: function(data) {
+    var resultRows= '';
+    $.each(data, function (i, item) {
+    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
+    });
+    $('#articleList tr').remove();
+    $('#articleList').append(resultRows);
+    },
     });
     });
     });
+
