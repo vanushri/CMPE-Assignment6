@@ -21,4 +21,8 @@ router.post('/update', ctrlModel.post_updatearticle)
 
 router.post('/search', ctrlModel.post_searcharticles)
 
+router.post('/search3', ctrlModel.search3)
+
+//router.get('/search2', ctrlModel.search2)
+
 module.exports = router;

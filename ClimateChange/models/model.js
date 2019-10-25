@@ -96,18 +96,86 @@ module.exports.post_searcharticles = function(req, res)
     console.log("YOOOOOOOOO" + searchinput)
     var db = req.db;
     var collection = db.get('All_Articles');
-    collection.find( { "Name" : searchinput }, 
-                     function(err, doc) 
-                
-                     {
-                         if (err) {
-                             console.log('Error in Search.')
-                         }
-                         else {
-                             console.log('Successful Search.')
-                         }
-                         console.log('HEREEEEEEEEEEEEE');
-                     });
+    collection.find( {},{ "Name" : searchinput }, 
+    function(err, docs) 
+    {
+        if (err) {
+            console.log('Error in Search.')
+        }
+        else {
+            console.log('Successful Search.')
+        }
+        console.log('HEREEEEEEEEEEEEE');
+        console.log('found ' + docs)
+    } );
 };
 
+
+module.exports.search2 = function(req, res) 
+{
+	console.log("in get data");
+    var db = req.db;
+    console.log("db =>"+db);
+    var collection = db.get('All_Articles');
+    console.log("collection =>"+collection);
+    collection.find({}, {}, 
+                    function(err, docs)
+                    {
+    					          console.log("docs =>"+docs);
+                        res.render('manageArticles', { "ArticleList" : docs });
+                    });
+};
+
+// module.exports.search3 = function(req, res) 
+// {
+
+//     var db = req.db;
+//     var collection = db.get('All_Articles');
+//     collection.findOne(
+//         {
+//          name: searchinput
+//         }, 
+//         function(err, docs){
+//             if(err){
+//                 throw err; 
+//             } else{
+//                 console.log("Hellloooo", docs);
+
+//             }
+//             res.render("manageArticles", {"ArticleList":docs}); 
+//         }
+//     );
+// };
+
+module.exports.search3 = function(req, res) 
+{
+    var searchinput = req.body.name;
+    console.log("YOOOOOOOOO" + searchinput)
+    var db = req.db;
+    var collection = db.get('All_Articles');
+    db.users.find({"name": /.nasa./}); 
+};
+
+// module.exports.search3 = function(req, res) 
+// {
+//     var searchinput = req.body.queries;
+//     console.log("YOOOOOOOOO" + searchinput)
+//     var db = req.db;
+//     var collection = db.get('All_Articles');
+//     collection.find({}, 
+//     function(err, docs){
+//             if(err){
+//                 throw err; 
+//             } else{
+//                 console.log(docs);
+//                 var articleNames = docs.map(function(name){
+//                     return name.Name; 
+//                 });
+//                 console.log(articleNames);//prints array with only artcile names
+
+               
+//             }
+//         }
+//     );
+// };
 
