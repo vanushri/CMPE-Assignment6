@@ -259,7 +259,8 @@ script.
     $(document).ready(function(){
     $(".searchButton").click(function(){
     var searchinput = $('[name="searchInput"]').val();
-    jQuery.ajax({
+    window.location.href = '/manageArticles/search?q='+searchinput;
+    /*jQuery.ajax({
     contentType: 'application/json',
     url: '/search',
     type:'POST',
@@ -267,12 +268,14 @@ script.
      success: function(data) {
     var resultRows= '';
     $.each(data, function (i, item) {
-    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
+      console.log(item.Name +"==================++++++++=============")
+    resultRows += '<tr><td><a href="' + item.Link + '">' + item.Name + '</a></td></tr>';
     });
+    //console.log(data+"==================++++++++=============");
     $('#articleList tr').remove();
-    $('#articleList').append(resultRows);
+    //$('#articleList').append(resultRows);
     },
-    });
+    });*/
     });
     });
 
