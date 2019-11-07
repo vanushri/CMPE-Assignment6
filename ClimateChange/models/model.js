@@ -42,7 +42,7 @@ module.exports.post_addarticle = function(req, res) {
     if (err) {
       res.send("Insert failed.");
     } else {
-      // Forward to success page
+      // Forward to success page.
       res.redirect("/manageArticles");
     }
   });
@@ -103,35 +103,6 @@ module.exports.search2 = function(req, res) {
   });
 };
 
-// module.exports.search3 = function(req, res)
-// {
-
-//     var db = req.db;
-//     var collection = db.get('All_Articles');
-//     collection.findOne(
-//         {
-//          name: searchinput
-//         },
-//         function(err, docs){
-//             if(err){
-//                 throw err;
-//             } else{
-//                 console.log("Hellloooo", docs);
-
-//             }
-//             res.render("manageArticles", {"ArticleList":docs});
-//         }
-//     );
-// };
-
-// module.exports.search3 = function(req, res)
-// {
-//     var searchinput = req.body.name;
-//     console.log("YOOOOOOOOO" + searchinput)
-//     var db = req.db;
-//     var collection = db.get('All_Articles');
-//     collection.find({"Name": /.nasa./}, );
-// };
 
 module.exports.article_search = function(req, res) {
   var searchinput = String(req.query.q);

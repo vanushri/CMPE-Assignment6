@@ -190,25 +190,6 @@ const allArticles = [
 		url: 'https://climate.nasa.gov/news/2898/nasa-tracks-wildfires-from-above-to-aid-firefighters-below/',
 	}
 ]
-		
-	
-/*	
-module.exports.get_articles = function(req, res, 
-	
-	) {
-	var query = req.query.query;
-	if(!query){
-		res.setHeader('Content-Type', 'application/json');
-		res.end(JSON.stringify({articles: allArticles}));
-	}
-	else{
-		var matches = allArticles.filter(function(article){
-			return article.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
-		});
-		res.setHeader('Content-Type', 'application/json');
-		res.end(JSON.stringify({articles: matches}));
-	}	
-};*/
 
 
 module.exports.post_articles = function(req, res, next) {
