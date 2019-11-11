@@ -9,6 +9,7 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var modelRouter = require('./routes/model');
+// var articlesRouter = require('/routes/articles')
 
 
 // Cloud Mongo DB - start
@@ -36,7 +37,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+// app.use('/articles',articlesRouter);
 app.use(cookieParser());
 app.use(session({
   secret: 'ssshhhh',
