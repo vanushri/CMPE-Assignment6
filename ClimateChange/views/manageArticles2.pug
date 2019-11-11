@@ -1,0 +1,305 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  
+  script(type='text/javascript' src='https://code.jquery.com/jquery-1.12.4.js')
+  script(type='text/javascript' src='https://canvasjs.com/assets/script/jquery-1.11.1.min.js')
+  script(type='text/javascript' src='https://canvasjs.com/assets/script/jquery.canvasjs.min.js')
+  script(type='text/javascript' src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+
+  link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+  link(rel='stylesheet' href='../stylesheets/homepage.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' href='../stylesheets/navbar.css')
+  link(rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css')
+  link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+  link(href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/eggplant/jquery-ui.css' type='text/css' rel='stylesheet')
+  link(rel ='stylesheet' href='../stylesheets/searchbar.css')
+    
+    
+//- function that fetches the articles on page load START
+    
+script.
+    $(document).ready(function(){
+    console.log('calling ajax');
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/articles',
+    type:'POST',
+    data: JSON.stringify({queries: []}),
+    success: function(data) {
+    var resultRows= '';
+    $.each(data.articles, function (i, item) {
+    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
+    });
+    $('#articleList').append(resultRows);
+    },
+    });
+     // function that fetches the articles on page load END
+    
+    
+    
+    //filter on click of search START
+    
+    $('#search').click(function(){
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/articles',
+    type:'POST',
+    data: JSON.stringify({queries: [$('#input').val()]}),
+    success: function(data) {
+    var resultRows= '';
+    $.each(data.articles, function (i, item) {
+    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
+    });
+    $('#articleList tr').remove();
+    $('#articleList').append(resultRows);
+    },
+    });
+    }
+    );
+    });
+    //filter on click of search END
+    
+
+
+    //filter as you drag and drop START
+    
+    function dragDropArticles(tags) {
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/articles',
+    type:'POST',
+    data: JSON.stringify({queries: tags}),
+    success: function(data) {
+    var resultRows= '';
+    $.each(data.articles, function (i, item) {
+    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
+    });
+    $('#articleList tr').remove();
+    $('#articleList').append(resultRows);
+    },
+    });
+    }
+    //filter as you drag and drop END
+
+
+    function filterArticles() {
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/articles',
+    type:'POST',
+    data: JSON.stringify({queries: [$('#input').val()]}),
+    success: function(data) {
+    var resultRows= '';
+    $.each(data.articles, function (i, item) {
+    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
+    });
+    $('#articleList tr').remove();
+    $('#articleList').append(resultRows);
+    },
+    });
+    }
+    //filter as you type END
+
+    
+
+    // tabs
+    $( function tabs() {
+    $( "#tabs" ).tabs({
+    beforeLoad: function( event, ui ) {
+    ui.jqXHR.fail(function() {
+    ui.panel.html(
+    "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+    "If this wouldn't be a demo." );
+    });
+    }
+    });
+    } );
+
+
+
+#tabs
+  ul
+    li
+      a(href='#tabs-1') Dashboard
+    li
+      a(href='#tabs-2') Articles
+
+
+  #tabs-1
+  
+        td 
+           #viz1573186735823.tableauPlaceholder(style='position: relative')
+             noscript
+               a(href='#')
+                 img(alt=' ' src='https://public.tableau.com/static/images/Fi/FinalDash280/FinalDash/1_rss.png' style='border: none')
+             object.tableauViz(style='display:none;')
+               param(name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F')
+               param(name='embed_code_version' value='3')
+               param(name='site_root' value='')
+               param(name='name' value='FinalDash280/FinalDash')
+               param(name='tabs' value='no')
+               param(name='toolbar' value='yes')
+               param(name='static_image' value='https://public.tableau.com/static/images/Fi/FinalDash280/FinalDash/1.png')
+               param(name='animate_transition' value='yes')
+               param(name='display_static_image' value='yes')
+               param(name='display_spinner' value='yes')
+               param(name='display_overlay' value='yes')
+               param(name='display_count' value='yes')
+               param(name='filter' value='publish=yes')
+           script(type='text/javascript').
+             var divElement = document.getElementById('viz1573186735823');
+             var vizElement = divElement.getElementsByTagName('object')[0];
+             if ( divElement.offsetWidth > 800 ) 
+             { vizElement.style.width='1000px';vizElement.style.height='827px';
+             } else if ( divElement.offsetWidth > 500 ) 
+             { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+             else { vizElement.style.width='100%';vizElement.style.height='1277px';}
+             var scriptElement = document.createElement('script');
+             scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+             vizElement.parentNode.insertBefore(scriptElement, vizElement);
+             
+            
+
+  
+  #tabs-2
+   
+    table
+      tr
+        td 
+            p Manage the Articles !
+      
+      tr
+       .search
+         input.searchTerm(type='text', name='searchInput', placeholder='Search Article?')
+         button.searchButton(type='submit')
+           i.fa.fa-search
+            
+                  
+  
+    each article in ArticleList
+      br
+      input(type='checkbox' name='articles' value=article._id )
+      a(href=article.Link)= article.Name
+
+    br
+    br
+    
+
+    table(style='width:100%')
+      tr
+        td(style='width:33%')
+          form(method='post')
+            fieldset
+              legend Delete
+              p
+                button.deletebtn(type='button') Delete
+        td(style='width:33%')
+          form(method='post')
+            fieldset
+              legend Update
+              p
+                label Name:
+                input(name='newname' type='text')
+              p
+                button.updatebtn(type='button') Update
+        td(style='width:33%')
+          form(action='/manageArticles/addArticle' method='post')
+            fieldset
+              legend Add Articles
+              p
+                label Name:
+                input(name='name' type='text')
+              p
+                label Link:
+                input(name='link' type='text')
+              p
+                button(type='submit' value='Submit') Add
+style.
+  button
+  {
+  margin:5px;
+  }
+
+
+script.
+    $(document).ready(function(){
+    $('input:checkbox').click(function() {
+    $('input:checkbox').not(this).prop('checked', false);
+    });
+    });
+
+
+//delete article
+script.
+    $(document).ready(function(){
+    $(".deletebtn").click(function(){
+    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/delete',
+    type:'POST',
+    data: JSON.stringify({queries: [id]}),
+    });
+    alert("Article Successfully Deleted!");
+    location.reload(true);
+    });
+    });
+
+//update article
+script.
+  $(document).ready(function(){
+  $('#updatebtn').click(function(){
+  $('#formHidden').toggle();
+  });
+  });
+
+script.
+    $(document).ready(function(){
+    $(".updatebtn").click(function(){
+    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
+    var newname = $('[name="newname"]').val();
+    info = [];
+    info[0] = id;
+    info[1] = newname;
+    console.log("NEW NAME: " + newname)
+    jQuery.ajax({
+    contentType: 'application/json',
+    url: '/update',
+    type:'POST',
+    data: JSON.stringify({queries: [info]}),
+    });
+    alert("Article Successfully Updated!");
+    location.reload(true);
+    });
+    });
+
+
+//search3
+
+script.
+    $(document).ready(function(){
+    $(".searchButton").click(function(){
+    var searchinput = $('[name="searchInput"]').val();
+    window.location.href = '/manageArticles/search?q='+searchinput;
+    /*jQuery.ajax({
+    contentType: 'application/json',
+    url: '/search',
+    type:'POST',
+    data: JSON.stringify({queries: [searchinput]}),
+     success: function(data) {
+    var resultRows= '';
+    $.each(data, function (i, item) {
+      console.log(item.Name +"==================++++++++=============")
+    resultRows += '<tr><td><a href="' + item.Link + '">' + item.Name + '</a></td></tr>';
+    });
+    //console.log(data+"==================++++++++=============");
+    $('#articleList tr').remove();
+    //$('#articleList').append(resultRows);
+    },
+    });*/
+    });
+    });
+
