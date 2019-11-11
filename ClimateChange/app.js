@@ -9,7 +9,7 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var modelRouter = require('./routes/model');
-var articlesRouter = require('./routes/model'); 
+var dashRouter = require('./routes/dashboard'); 
 // var articlesRouter = require('/routes/articles')
 
 
@@ -48,8 +48,8 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
+app.use('/dashboard', dashRouter); 
 app.use('/manageArticles', modelRouter); 
-app.use('/viewArticles', modelRouter); 
 
 // messages
 app.use(require('connect-flash')());
