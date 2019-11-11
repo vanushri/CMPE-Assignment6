@@ -163,7 +163,6 @@ script.
              
             
 
-  
   #tabs-2
    
     table
@@ -284,22 +283,6 @@ script.
     $(".searchButton").click(function(){
     var searchinput = $('[name="searchInput"]').val();
     window.location.href = '/manageArticles/search?q='+searchinput;
-    /*jQuery.ajax({
-    contentType: 'application/json',
-    url: '/search',
-    type:'POST',
-    data: JSON.stringify({queries: [searchinput]}),
-     success: function(data) {
-    var resultRows= '';
-    $.each(data, function (i, item) {
-      console.log(item.Name +"==================++++++++=============")
-    resultRows += '<tr><td><a href="' + item.Link + '">' + item.Name + '</a></td></tr>';
-    });
-    //console.log(data+"==================++++++++=============");
-    $('#articleList tr').remove();
-    //$('#articleList').append(resultRows);
-    },
-    });*/
     });
     });
 
