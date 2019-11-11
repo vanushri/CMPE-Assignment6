@@ -43,9 +43,9 @@ nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
     #navbarDefault.navbar-collapse.collapse.justify-content-center
       ul.navbar-nav
         li.nav-item
-          a.nav-link.active(href='index.html') Dashboard
+          a.nav-link.active(href='/dashboard') Dashboard
         li.nav-item
-          a.nav-link(href='about.html') Articles
+          a.nav-link(href='/manageArticles') Articles
 // / Nav End /
 // / Carousel Star /
 .intro.intro-carousel
@@ -54,263 +54,54 @@ nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
     .intro-content.display-table
       .table-cell
         .row
-          .intro-body
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-//- function that fetches the articles on page load START
-    
-script.
-    $(document).ready(function(){
-    console.log('calling ajax');
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/articles',
-    type:'POST',
-    data: JSON.stringify({queries: []}),
-    success: function(data) {
-    var resultRows= '';
-    $.each(data.articles, function (i, item) {
-    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
-    });
-    $('#articleList').append(resultRows);
-    },
-    });
-     // function that fetches the articles on page load END
-    
-    
-    
-    //filter on click of search START
-    
-    $('#search').click(function(){
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/articles',
-    type:'POST',
-    data: JSON.stringify({queries: [$('#input').val()]}),
-    success: function(data) {
-    var resultRows= '';
-    $.each(data.articles, function (i, item) {
-    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
-    });
-    $('#articleList tr').remove();
-    $('#articleList').append(resultRows);
-    },
-    });
-    }
-    );
-    });
-    //filter on click of search END
-    
-
-
-    //filter as you drag and drop START
-    
-    function dragDropArticles(tags) {
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/articles',
-    type:'POST',
-    data: JSON.stringify({queries: tags}),
-    success: function(data) {
-    var resultRows= '';
-    $.each(data.articles, function (i, item) {
-    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
-    });
-    $('#articleList tr').remove();
-    $('#articleList').append(resultRows);
-    },
-    });
-    }
-    //filter as you drag and drop END
-
-
-    function filterArticles() {
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/articles',
-    type:'POST',
-    data: JSON.stringify({queries: [$('#input').val()]}),
-    success: function(data) {
-    var resultRows= '';
-    $.each(data.articles, function (i, item) {
-    resultRows += '<tr><td><a href="' + item.url + '">' + item.name + '</a></td></tr>';
-    });
-    $('#articleList tr').remove();
-    $('#articleList').append(resultRows);
-    },
-    });
-    }
-    //filter as you type END
-
-    
-
-    // tabs
-    $( function tabs() {
-    $( "#tabs" ).tabs({
-    beforeLoad: function( event, ui ) {
-    ui.jqXHR.fail(function() {
-    ui.panel.html(
-    "Couldn't load this tab. We'll try to fix this as soon as possible. " +
-    "If this wouldn't be a demo." );
-    });
-    }
-    });
-    } );
-
-
-
-    table
-      tr
-        td 
-            p Manage the Articles !
-      
-      tr
-       .search
-         input.searchTerm(type='text', name='searchInput', placeholder='Search Article?')
-         button.searchButton(type='submit')
-           i.fa.fa-search
-            
-                  
-  
-    each article in ArticleList
-      br
-      input(type='checkbox' name='articles' value=article._id )
-      a(href=article.Link)= article.Name
-
-    br
-    br
-    
-
-    table(style='width:100%')
-      tr
-        td(style='width:33%')
-          form(method='post')
-            fieldset
-              legend Delete
-              p
-                button.deletebtn(type='button') Delete
-        td(style='width:33%')
-          form(method='post')
-            fieldset
-              legend Update
-              p
-                label Name:
-                input(name='newname' type='text')
-              p
-                button.updatebtn(type='button') Update
-        td(style='width:33%')
-          form(action='/manageArticles/addArticle' method='post')
-            fieldset
-              legend Add Articles
-              p
-                label Name:
-                input(name='name' type='text')
-              p
-                label Link:
-                input(name='link' type='text')
-              p
-                button(type='submit' value='Submit') Add
-style.
-  button
-  {
-  margin:5px;
-  }
-
-
-script.
-    $(document).ready(function(){
-    $('input:checkbox').click(function() {
-    $('input:checkbox').not(this).prop('checked', false);
-    });
-    });
-
-
-//delete article
-script.
-    $(document).ready(function(){
-    $(".deletebtn").click(function(){
-    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/delete',
-    type:'POST',
-    data: JSON.stringify({queries: [id]}),
-    });
-    alert("Article Successfully Deleted!");
-    location.reload(true);
-    });
-    });
-
-//update article
-script.
-  $(document).ready(function(){
-  $('#updatebtn').click(function(){
-  $('#formHidden').toggle();
-  });
-  });
-
-script.
-    $(document).ready(function(){
-    $(".updatebtn").click(function(){
-    var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
-    var newname = $('[name="newname"]').val();
-    info = [];
-    info[0] = id;
-    info[1] = newname;
-    console.log("NEW NAME: " + newname)
-    jQuery.ajax({
-    contentType: 'application/json',
-    url: '/update',
-    type:'POST',
-    data: JSON.stringify({queries: [info]}),
-    });
-    alert("Article Successfully Updated!");
-    location.reload(true);
-    });
-    });
-
-
-//search3
-
-script.
-    $(document).ready(function(){
-    $(".searchButton").click(function(){
-    var searchinput = $('[name="searchInput"]').val();
-    window.location.href = '/manageArticles/search?q='+searchinput;
-    });
-    });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+          .intro-body     
+            .search
+              br 
+              br
+              br
+              input.searchTerm(type='text', name='searchInput', placeholder='Search Article?')
+              button.searchButton(type='submit')
+              i.fa.fa-search
+            each article in ArticleList
+              br
+              input(type='checkbox' name='articles' value=article._id )
+              a(href=article.Link)= article.Name
+              br
+              br
+            table(style='width:100%')
+               tr
+                td(style='width:33%')
+                  form(method='post')
+                    fieldset
+                      legend Delete
+                      p
+                        button.deletebtn(type='button') Delete
+                td(style='width:33%')
+                  form(method='post')
+                    fieldset
+                      legend Update
+                      p
+                        label Name:
+                        input(name='newname' type='text')
+                      p
+                        button.updatebtn(type='button') Update
+                td(style='width:33%')
+                  form(action='/manageArticles/addArticle' method='post')
+                    fieldset
+                      legend Add Articles
+                      p
+                        label Name:
+                        input(name='name' type='text')
+                      p
+                        label Link:
+                        input(name='link' type='text')
+                      p
+                        button(type='submit' value='Submit') Add
+            style.
+              button
+              {
+              margin:5px;
+              }   
 // / Carousel end /
 a.back-to-top(href='#')
   i.fa.fa-chevron-up
@@ -327,3 +118,59 @@ script(src='lib/scrollreveal/scrollreveal.min.js')
 script(src='contactform/contactform.js')
 // Template Main Javascript File
 script(src='js/main.js')
+script.
+  $(document).ready(function(){
+  $('input:checkbox').click(function() {
+  $('input:checkbox').not(this).prop('checked', false);
+  });
+  });
+//delete article
+script.
+  $(document).ready(function(){
+  $(".deletebtn").click(function(){
+  var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
+  jQuery.ajax({
+  contentType: 'application/json',
+  url: '/delete',
+  type:'POST',
+  data: JSON.stringify({queries: [id]}),
+  });
+  alert("Article Successfully Deleted!");
+  location.reload(true);
+  });
+  });
+//update article
+script.
+  $(document).ready(function(){
+  $('#updatebtn').click(function(){
+  $('#formHidden').toggle();
+  });
+  });
+script.
+  $(document).ready(function(){
+  $(".updatebtn").click(function(){
+  var id = $(":checkbox:checked").map(function() { return $(this).val(); }).get();
+  var newname = $('[name="newname"]').val();
+  info = [];
+  info[0] = id;
+  info[1] = newname;
+  console.log("NEW NAME: " + newname)
+  jQuery.ajax({
+  contentType: 'application/json',
+  url: '/update',
+  type:'POST',
+  data: JSON.stringify({queries: [info]}),
+  });
+  alert("Article Successfully Updated!");
+  location.reload(true);
+  });
+  });
+//search3
+script.
+  $(document).ready(function(){
+  $(".searchButton").click(function(){
+  var searchinput = $('[name="searchInput"]').val();
+  //- window.location.href = href='/manageArticles/search?q='+searchinput;
+  window.location.assign(href='/manageArticles/search?q='+searchinput);
+  });
+  });

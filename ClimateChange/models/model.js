@@ -102,8 +102,6 @@ module.exports.search2 = function(req, res) {
     res.render("manageArticles", { ArticleList: docs });
   });
 };
-
-
 module.exports.article_search = function(req, res) {
   var searchinput = String(req.query.q);
     console.log("User Input: " + searchinput)

@@ -323,16 +323,24 @@ a:hover {
 /*------/ Overlay /------*/
 
 .overlay-a {
+ 
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 27%, rgba(0, 0, 0, 0.65) 90%);
+  background-attachment: fixed;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  overflow-x: scroll;
 }
 
 .overlay {
+  background-attachment: fixed;
   position: absolute;
   top: 0;
   left: 0px;
   padding: 0;
   height: 100%;
   width: 100%;
+  overflow-x: scroll;
 }
 
 /*------/ Owl carousel /------*/
@@ -899,6 +907,8 @@ a:hover {
 
 .intro .intro-content {
   position: absolute;
+  overflow-x: scroll;
+
 }
 
 .intro .intro-body {
@@ -1443,68 +1453,6 @@ a:hover {
   font-size: .7rem;
 }
 
-/*======================================
-//--//-->   TESTIMONIALS
-======================================*/
-
-.testimonials-box {
-  padding: 1rem 0;
-}
-
-.testimonials-box .testimonial-avatar {
-  width: 80px !important;
-  display: -webkit-inline-box !important;
-  display: -webkit-inline-flex !important;
-  display: -ms-inline-flexbox !important;
-  display: inline-flex !important;
-  border-radius: 50%;
-}
-
-.testimonial-ico {
-  text-align: center;
-}
-
-.testimonial-ico span {
-  font-size: 1.8rem;
-  background-color: #2eca6a;
-  color: #ffffff;
-  padding: .4rem 1rem;
-  border-radius: 50px;
-}
-
-.testimonial-text {
-  font-style: italic;
-  margin-top: 25px;
-  padding: 1.5rem 1.5rem;
-  background-color: #f3f3f3;
-  position: relative;
-}
-
-.testimonial-text:after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 25px;
-  width: 0px;
-  height: 0px;
-  border-top: 15px solid #f3f3f3;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-}
-
-.testimonial-author-box {
-  margin-top: 2rem;
-}
-
-.testimonial-author {
-  margin-left: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-size: 1.2rem;
-  color: #000000;
-}
 
 /*======================================
 //--//-->   FOOTER
@@ -1545,67 +1493,6 @@ footer .credits {
   font-size: 14px;
 }
 
-/*======================================
-//--//-->   FORM INPUT
-======================================*/
-
-.form-a #sendmessage {
-  color: #2eca6a;
-  border: 1px solid #26a356;
-  display: none;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.form-a #errormessage {
-  color: red;
-  display: none;
-  border: 1px solid red;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.form-a #sendmessage.show,
-.form-a #errormessage.show,
-.form-a .show {
-  display: block;
-}
-
-.form-a .validation {
-  color: red;
-  display: none;
-  margin: 4px 0 20px 0;
-  font-weight: 400;
-  font-size: 13px;
-}
-
-.form-a label {
-  color: #000000;
-  position: relative;
-}
-
-.form-a select.form-control-lg:not([size]):not([multiple]) {
-  height: 3.5rem;
-}
-
-.form-a .form-control {
-  border-radius: 0;
-  font-size: 1.1rem;
-  font-weight: 300;
-}
-
-.form-a .form-control.form-control-a {
-  height: 3.5rem;
-}
-
-.form-a .form-control:focus {
-  box-shadow: none;
-  border-color: #2eca6a;
-}
 
 /*======================================
 //--//-->   BUTTON
