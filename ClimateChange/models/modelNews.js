@@ -1,14 +1,28 @@
-module.exports.get_data = function(req, res) {
-  console.log("in get data");
-  var db = req.db;
-  console.log("db =>" + db);
-  var collection = db.get("News");
-  console.log("collection =>" + collection);
-  collection.find({}, {}, function(err, docs) {
-    console.log("docs =>" + docs);
-    res.render("news", { ArticleList: docs });
-  });
+module.exports.get_data = function(req, res) 
+{
+    var db = req.db;
+    var collection = db.get('News');
+    collection.find({}, {}, 
+                    function(err, docs)
+                    {
+                      console.log(collection.News)
+                        res.render('News', { "News" : docs });
+                    });
 };
+
+
+// module.exports.get_data = function(req, res) {
+//   console.log("in get data");
+//   var db = req.db;
+//   console.log("db =>" + db);
+//   var collection = db.get("News");
+//   console.log("collection =>" + collection);
+//   collection.find({}, {}, function(err, docs) {
+//     console.log("docs =>" + docs);
+//     res.render("news", { ArticleList: docs });
+//   });
+// };
+
 
 /*module.exports.post_deletearticle = function(req, res) {
   var articleid = req.body.queries;

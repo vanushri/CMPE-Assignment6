@@ -78,87 +78,27 @@ nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
 
 
 // / Property Grid Star /
+br
+br
+br
+br
 section.property-grid.grid
   .container
     .row
-      .col-md-4
-        .card-box-a.card-shadow
-          .img-box-a
-            img.img-a.img-fluid(src='img/property-1.jpg' alt='')
-          .card-overlay
-            .card-overlay-a-content
-              .card-header-a
-                h2.card-title-a
-                  | New Earth Mission Will Track Rising Oceans into 2030
-              .card-body-a
-                a.link-a(href='https://climate.nasa.gov/news/2934/new-earth-mission-will-track-rising-oceans-into-2030/')
-                  | Click here to view
-                  span.ion-ios-arrow-forward
-      .col-md-4
-        .card-box-a.card-shadow
-          .img-box-a
-            img.img-a.img-fluid(src='img/property-1.jpg' alt='')
-          .card-overlay
-            .card-overlay-a-content
-              .card-header-a
-                h2.card-title-a
-                  | New Earth Mission Will Track Rising Oceans into 2030
-              .card-body-a
-                a.link-a(href='https://climate.nasa.gov/news/2934/new-earth-mission-will-track-rising-oceans-into-2030/')
-                  | Click here to view
-                  span.ion-ios-arrow-forward
-      .col-md-4
-        .card-box-a.card-shadow
-          .img-box-a
-            img.img-a.img-fluid(src='img/property-1.jpg' alt='')
-          .card-overlay
-            .card-overlay-a-content
-              .card-header-a
-                h2.card-title-a
-                  | New Earth Mission Will Track Rising Oceans into 2030
-              .card-body-a
-                a.link-a(href='https://climate.nasa.gov/news/2934/new-earth-mission-will-track-rising-oceans-into-2030/')
-                  | Click here to view
-                  span.ion-ios-arrow-forward
-      .col-md-4
-        .card-box-a.card-shadow
-          .img-box-a
-            img.img-a.img-fluid(src='img/property-1.jpg' alt='')
-          .card-overlay
-            .card-overlay-a-content
-              .card-header-a
-                h2.card-title-a
-                  | New Earth Mission Will Track Rising Oceans into 2030
-              .card-body-a
-                a.link-a(href='https://climate.nasa.gov/news/2934/new-earth-mission-will-track-rising-oceans-into-2030/')
-                  | Click here to view
-                  span.ion-ios-arrow-forward
-      .col-md-4
-        .card-box-a.card-shadow
-          .img-box-a
-            img.img-a.img-fluid(src='img/property-1.jpg' alt='')
-          .card-overlay
-            .card-overlay-a-content
-              .card-header-a
-                h2.card-title-a
-                  | New Earth Mission Will Track Rising Oceans into 2030
-              .card-body-a
-                a.link-a(href='https://climate.nasa.gov/news/2934/new-earth-mission-will-track-rising-oceans-into-2030/')
-                  | Click here to view
-                  span.ion-ios-arrow-forward
-      .col-md-4
-        .card-box-a.card-shadow
-          .img-box-a
-            img.img-a.img-fluid(src='img/property-1.jpg' alt='')
-          .card-overlay
-            .card-overlay-a-content
-              .card-header-a
-                h2.card-title-a
-                  | New Earth Mission Will Track Rising Oceans into 2030
-              .card-body-a
-                a.link-a(href='https://climate.nasa.gov/news/2934/new-earth-mission-will-track-rising-oceans-into-2030/')
-                  | Click here to view
-                  span.ion-ios-arrow-forward
+      each x in News
+        .col-md-4
+          .card-box-a.card-shadow
+            .img-box-a
+              img.img-a.img-fluid(src='img/property-1.jpg' alt='')
+            .card-overlay
+              .card-overlay-a-content
+                .card-header-a
+                  h2.card-title-a
+                    a(href="mailto:#{x.name}")= x.name
+                .card-body-a
+                  a.link-a(href='https://climate.nasa.gov/news/2934/new-earth-mission-will-track-rising-oceans-into-2030/')
+                    | Click here to view
+                    span.ion-ios-arrow-forward
 // / Property Grid End /
 
 
