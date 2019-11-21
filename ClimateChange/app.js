@@ -18,7 +18,7 @@ var globalRouter = require('./routes/globalwarming');
 var seaRouter = require('./routes/sealevel');
 var droughtRouter = require('./routes/drought');
 var fireRouter = require('./routes/wildfire');
-
+var fossilRouter = require('./routes/fossilfuel');
 // var articlesRouter = require('/routes/articles')
 
 
@@ -61,6 +61,7 @@ app.use('/', indexRouter);
 app.use('/dashboard', dashRouter);
 app.use('/deforestation', deforestRouter); 
 app.use('/emission', emissionRouter);
+app.use('/fossilfuel', fossilRouter);
 
 app.use('/globalwarming', globalRouter);
 app.use('/sealevel', seaRouter);
