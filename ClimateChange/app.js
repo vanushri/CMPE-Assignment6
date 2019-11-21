@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var modelRouter = require('./routes/model');
 var newsRouter = require('./routes/modelNews');
 var dashRouter = require('./routes/dashboard'); 
+var deforestRouter = require('./routes/deforest');
 // var articlesRouter = require('/routes/articles')
 
 
@@ -50,7 +51,8 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
-app.use('/dashboard', dashRouter); 
+app.use('/dashboard', dashRouter);
+app.use('/deforestation', deforestRouter); 
 app.use('/manageArticles', modelRouter);
 app.use('/news', newsRouter);
 
