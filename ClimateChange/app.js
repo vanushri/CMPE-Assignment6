@@ -9,6 +9,7 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var modelRouter = require('./routes/model');
+var newsRouter = require('./routes/modelNews');
 var dashRouter = require('./routes/dashboard'); 
 // var articlesRouter = require('/routes/articles')
 
@@ -16,7 +17,8 @@ var dashRouter = require('./routes/dashboard');
 // Cloud Mongo DB - start
 const url = 'mongodb+srv://cmpe:cmpe@cluster0-ddt5m.mongodb.net/cmpe280?retryWrites=true&w=majority';
 const db = require('monk')(url);
-const collection = db.get('All_articles')
+//const collection = db.get('All_articles')
+const collection = db.get('News');
 // Cloud Mongo DB - end
 
 var app = express();
@@ -49,7 +51,8 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/dashboard', dashRouter); 
-app.use('/manageArticles', modelRouter); 
+app.use('/manageArticles', modelRouter);
+app.use('/news', newsRouter);
 
 // messages
 app.use(require('connect-flash')());
