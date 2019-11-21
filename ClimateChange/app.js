@@ -13,6 +13,12 @@ var newsRouter = require('./routes/modelNews');
 var dashRouter = require('./routes/dashboard'); 
 var deforestRouter = require('./routes/deforest');
 var emissionRouter = require('./routes/emission');
+
+var globalRouter = require('./routes/globalwarming');
+var seaRouter = require('./routes/sealevel');
+var droughtRouter = require('./routes/drought');
+var fireRouter = require('./routes/wildfire');
+
 // var articlesRouter = require('/routes/articles')
 
 
@@ -55,6 +61,12 @@ app.use('/', indexRouter);
 app.use('/dashboard', dashRouter);
 app.use('/deforestation', deforestRouter); 
 app.use('/emission', emissionRouter);
+
+app.use('/globalwarming', globalRouter);
+app.use('/sealevel', seaRouter);
+app.use('/drought', droughtRouter);
+app.use('/wildfire', fireRouter);
+
 app.use('/manageArticles', modelRouter);
 app.use('/news', newsRouter);
 

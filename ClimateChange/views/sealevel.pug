@@ -44,51 +44,65 @@ nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
       ul.navbar-nav
         li.nav-item
           a.nav-link(href='/dashboard') Dashboard
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            | Causes
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='/deforestation') Deforestation
+            a.dropdown-item(href='/emission') CO2 Emissions
+            a.dropdown-item(href='/emission') Fossil Fuel Combustion
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle.active(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            | Effects
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='/globalwarming') Global Warming
+            a.dropdown-item(href='/sealevel') Sea Level
+            a.dropdown-item(href='/drought') Drought
+            a.dropdown-item(href='/wildfire') Wild Fires
         li.nav-item
-          a.nav-link.active(href='/manageArticles') Causes
-        li.nav-item
-          a.nav-link(href='/manageArticles') Effects
-        li.nav-item
-          a.nav-link(href='/manageArticles') New & Feed
-        li.nav-item
-          a.nav-link(href='/manageArticles') Resources
-        li.nav-item
-          a.nav-link(href='/manageArticles') Articles
+          a.nav-link(href='/news') News & Feed
+        //li.nav-item
+          //a.nav-link(href='/manageArticles') Articles
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            | More
+          .dropdown-menu(aria-labelledby='navbarDropdown')
+            a.dropdown-item(href='blog-single.html') How can I help
+            a.dropdown-item(href='blog-single.html') Resources
 // / Nav End /
-// / Carousel Star /
-.intro.intro-carousel
-  br
-  br
-  .intro-body
-    #viz1573452800982.tableauPlaceholder(style='position: relative')
-      noscript
-        a(href='#')
-          img(alt=' ' src='https://public.tableau.com/static/images/Pr/ProjectDash1/FinalDash/1_rss.png' style='border: none')
-      object.tableauViz(style='display:none;')
-        param(name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F')
-        param(name='embed_code_version' value='3')
-        param(name='site_root' value='')
-        param(name='name' value='ProjectDash1/FinalDash')
-        param(name='tabs' value='no')
-        param(name='toolbar' value='yes')
-        param(name='static_image' value='https://public.tableau.com/static/images/Pr/ProjectDash1/FinalDash/1.png')
-        param(name='animate_transition' value='yes')
-        param(name='display_static_image' value='yes')
-        param(name='display_spinner' value='yes')
-        param(name='display_overlay' value='yes')
-        param(name='display_count' value='yes')
-        param(name='filter' value='publish=yes')
-    script(type='text/javascript').
-      var divElement = document.getElementById('viz1573452800982');
-      var vizElement = divElement.getElementsByTagName('object')[0];
-      if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
-      else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
-      else { vizElement.style.width='100%';vizElement.style.height='1277px';}
-      var scriptElement = document.createElement('script');
-      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-      vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    p
-  // / Carousel end /
+
+
+// / Intro Single start /
+section.intro-single
+  .container
+    .row
+      .col-md-12.col-lg-8
+        .title-single-box
+          h1.title-single Sea Level
+          span.color-text-a &#x9;few lines ......... 
+// / Intro Single End /
+// / News Single Star /
+section.news-single.nav-arrow-b
+  .container
+    .row
+      .col-sm-12
+        .news-img-box
+          img.img-fluid(src='img/slide-3.jpg' alt='')
+      .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+        .post-content.color-text-a
+          p.post-intro
+            | Sed porttitor lectus nibh. Lorem ipsum dolor sit amet, consectetur
+            strong adipiscing
+            |  elit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+            |               Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
+          p
+            | Proin eget tortor risus. Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum
+            | porta. Pellentesque
+            | in ipsum id orci porta dapibus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
+            | dui. Lorem ipsum dolor sit amet.
+// / News Single End /
+
+
   a.back-to-top(href='#')
     i.fa.fa-chevron-up
   #preloader
