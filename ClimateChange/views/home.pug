@@ -43,7 +43,7 @@ nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
     #navbarDefault.navbar-collapse.collapse.justify-content-center
       ul.navbar-nav
         li.nav-item
-          a.nav-link(href='/dashboard') Dashboard
+          a.nav-link.active(href='/dashboard') Dashboard
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             | Causes
@@ -51,7 +51,7 @@ nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
             a.dropdown-item(href='/deforestation') Deforestation
             a.dropdown-item(href='/emission') CO2 Emissions
         li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle.active(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             | Effects
           .dropdown-menu(aria-labelledby='navbarDropdown')
             a.dropdown-item(href='/globalwarming') Global Warming
@@ -71,44 +71,19 @@ nav.navbar.navbar-default.navbar-trans.navbar-expand-lg.fixed-top
 // / Nav End /
 
 
-// / Intro Single start /
-section.intro-single
-  .container
-    .row
-      .col-md-12.col-lg-8
-        .title-single-box
-          h1.title-single Wildfires
-          span.color-text-a
-            | "California fire experts estimate that the blazes that devastated Northern California's wine country in October 2017 emitted as much CO2 in one week as all of California's cars and trucks do over the course of a year."
-// / Intro Single End /
-// / News Single Star /
-section.news-single.nav-arrow-b
-  .container
-    .row
-      .col-sm-12
-        .news-img-box
-          img.img-fluid(src='img/wildfire.jpg' alt='')
-      .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-        .post-content.color-text-a
-          p.post-intro
-            br
-            | "California fire experts estimate that the blazes that devastated Northern California's wine country in October 2017 emitted as much CO2 in one week as all of California's cars and trucks do over the course of a year."
-          p
-            | Across the United States and around the world, wildfires are growing in intensity and frequency. Wildfire season can spark anytime throughout the year in arid regions where Mediterranean climates predominate, such as Spain, Portugal, and much of California. Dry, wooded regions where people and wild lands exist in close proximity have grown especially dangerous, as rural communities become trapped by rapidly spreading conflagrations. Climate scientists have correlated the growing incidence and intensity of wildfires with rising global temperatures.
-          p
-            | Climate change contributes to more and bigger wildfires in a variety of ways.
-          p
-            | The rise in average global temperatures has led to higher spring and summer temperatures, and importantly an earlier onset of spring. This pattern has led to a rapid melting of spring snowpack, causing soils to dry out earlier and remain dry longer.
-          p
-            | After months of drying in the longer periods of higher temperatures, stressed forests have become more susceptible to infestations by bark beetles and other insects that thrive in warmer temperatures. Throughout the western United States and Canada, bark beetles have killed off hundreds of millions of trees and devastated forestlands, turning them into kindling for catastrophic wildfires.
-          h5
-            br
-            strong How Do Wildfires Affect Climate Change?
-          br 
-          p
-            | Wildfires impact climate change because they emit massive amounts of carbon dioxide and other pollutants that can affect regional and even global climate. Also, they damage forests that would otherwise remove CO2 from the air. Lastly, they inject soot and other aerosols into the atmosphere, with complex effects on warming and cooling.
-// / News Single End /
+img.globe(src='img/globe.png' alt='' align="right")
+// 
 
+// / Intro paragraph start /
+.paragraph
+    p
+      | "We cannot get through a single day without having an impact 
+      | on the world around us. What we do makes a difference, and
+      |  we have to decide what kind of difference we want to make."
+      //- | Climate change is the environmental challenge of this generation, 
+      //- | and it is imperative that we act before it’s too late.”
+
+// 
 
   a.back-to-top(href='#')
     i.fa.fa-chevron-up

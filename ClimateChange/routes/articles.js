@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var ctrlModel = require("../models/model");
 
-router.get("/", ctrlModel.get_data);
+router.get("s", ctrlModel.get_data);
 
 router.post("/addArticle",ctrlModel.post_addarticle);
 

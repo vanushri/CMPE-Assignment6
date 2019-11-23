@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var modelRouter = require('./routes/model');
 var newsRouter = require('./routes/modelNews');
 var dashRouter = require('./routes/dashboard'); 
+var homeRouter = require('./routes/home'); 
 var deforestRouter = require('./routes/deforest');
 var emissionRouter = require('./routes/emission');
 
@@ -57,11 +58,12 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 app.use('/dashboard', dashRouter);
 app.use('/deforestation', deforestRouter); 
 app.use('/emission', emissionRouter);
 app.use('/fossilfuel', fossilRouter);
+app.use('/home', homeRouter); 
 
 app.use('/globalwarming', globalRouter);
 app.use('/sealevel', seaRouter);

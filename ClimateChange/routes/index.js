@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var ctrlArticles = require("../controllers/articles");
 var ctrlModel = require("../models/model");
-var ctrlDash = require("../controllers/dashboard");
+// var ctrlDash = require("../controllers/dashboard");
 
 //router.get("/", ctrlModel.get_data);
-router.get("/", ctrlDash.get_dashboard);
+// router.get("/", ctrlDash.get_dashboard);
 
 router.post('/articles', ctrlArticles.post_articles);
 
