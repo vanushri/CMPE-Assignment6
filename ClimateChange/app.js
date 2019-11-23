@@ -15,6 +15,8 @@ var homeRouter = require('./routes/home');
 var deforestRouter = require('./routes/deforest');
 var emissionRouter = require('./routes/emission');
 
+var helpRouter = require('./routes/help');
+
 var globalRouter = require('./routes/globalwarming');
 var seaRouter = require('./routes/sealevel');
 var droughtRouter = require('./routes/drought');
@@ -72,6 +74,7 @@ app.use('/wildfire', fireRouter);
 
 app.use('/manageArticles', modelRouter);
 app.use('/news', newsRouter);
+app.use('/help', helpRouter);
 
 // messages
 app.use(require('connect-flash')());
